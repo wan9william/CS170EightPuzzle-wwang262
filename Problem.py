@@ -10,7 +10,7 @@ def my_function():
 def print_board():
     for x in range(0, 3):
         print(board[3 * x], board[3 * x + 1], board[3 * x + 2])
-    print("=============")
+    print("\n")
 
 
 def move_left():
