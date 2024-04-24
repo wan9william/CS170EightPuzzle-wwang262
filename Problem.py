@@ -61,14 +61,17 @@ def scramble_board():
 
 def check_solution():
     for x in range(0, 9):
-        if board[x] != x+1 & board[x] != 0:
+        print(x+1,":",board[x])
+        if (board[x] != x+1) & (x == 9 & board[x] != 0):
             return False
     return True
 
 
 print_board()
+print(check_solution())
 move_left()
 print_board()
+print(check_solution())
 move_left()
 print_board()
 move_left()
