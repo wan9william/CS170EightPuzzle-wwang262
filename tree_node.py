@@ -13,6 +13,11 @@ class tree_node:
         self._children = []
         self._parent = None
 
+    # Returns the array that represents the state of the 8-puzzle board
+    # Usage: node.get_state()
+    def get_state(self):
+        return self._board_array
+
     # Returns the depth of the node by tracing back to the root
     # Usage: node.get_depth()
     def get_depth(self):
@@ -40,8 +45,8 @@ class tree_node:
 
     # Prints the state of the node
     # tab: # of spaces from the left - for formatting (default is 0)
-    # Usage: node.print_node() or node.print_node(i) where i is some integer
-    def print_node(self, tab=0):
+    # Usage: node.print_state() or node.print_state(i) where i is some integer
+    def print_state(self, tab=0):
         for x in range(0, 3):
             print(("  "*tab) + str(self._board_array[3 * x]), self._board_array[3 * x + 1], self._board_array[3 * x + 2])
     
@@ -51,7 +56,7 @@ class tree_node:
     def print_tree(self):
         if self._parent:                                # base case
             print(("  "*self.get_depth()) + "|",)       # formatting the placement of '|' in the tree diagram 
-        self.print_node(self.get_depth())               # prints node
+        self.print_state(self.get_depth())               # prints node
         if self._children:
             for child in self._children:
                 child.print_tree()                      # recursively calls print_tree() on all child nodes
@@ -69,28 +74,28 @@ class tree_node:
             curr_state = curr_state._parent
         # pops nodes out of the stack and prints the solution path
         while solution_stack:
-            solution_stack.pop().print_node()
+            solution_stack.pop().print_state()
             print("\n", end="")
 
-#Testing
-root = tree_node([1, 2, 3, 4, 5, 6, 7, 8, 0])
+# Testing
+# root = tree_node([1, 2, 3, 4, 5, 6, 7, 8, 0])
 
-child1 = tree_node([1, 2, 3, 4, 5, 6, 7, 0, 8])
-child2 = tree_node([1, 2, 3, 4, 5, 0, 7, 8, 6])
-root.add_children([child1, child2])
+# child1 = tree_node([1, 2, 3, 4, 5, 6, 7, 0, 8])
+# child2 = tree_node([1, 2, 3, 4, 5, 0, 7, 8, 6])
+# root.add_children([child1, child2])
 
-child3 = tree_node([1, 2, 3, 4, 5, 6, 0, 7, 8])
-child4 = tree_node([1, 2, 3, 4, 0, 6, 7, 5, 8])
-child1.add_children([child3, child4])
+# child3 = tree_node([1, 2, 3, 4, 5, 6, 0, 7, 8])
+# child4 = tree_node([1, 2, 3, 4, 0, 6, 7, 5, 8])
+# child1.add_children([child3, child4])
 
-child5 = tree_node([1, 2, 0, 4, 5, 3, 7, 8, 6])
-child2.add_child(child5)
+# child5 = tree_node([1, 2, 0, 4, 5, 3, 7, 8, 6])
+# child2.add_child(child5)
 
-print("tree:")
-root.print_tree()
+# print("tree:")
+# root.print_tree()
 
-print("solution path with child5 = goal")
-child5.print_solution_path()
+# print("solution path with child5 = goal")
+# child5.print_solution_path()
 
-print("solution path with root = goal")
-root.print_solution_path()
+# print("solution path with root = goal")
+# root.print_solution_path()
