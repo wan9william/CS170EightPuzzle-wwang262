@@ -90,6 +90,8 @@ class Problem:
             return True
         return False
 
+    #prints array in a NxN board pattern
+    #TODO: incorporate larger boards
     def print_board(self):
         for x in range(0, 3):
             print(self._initial_state[3 * x], self._initial_state[3 * x + 1], self._initial_state[3 * x + 2])

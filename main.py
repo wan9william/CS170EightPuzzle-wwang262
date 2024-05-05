@@ -59,6 +59,7 @@ class GUI:
         new_state = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         count = 0
         while True:
+            print("ENTER YOUR PUZZLE, use a zero to represent the blank")
             print("'X' TO RETURN TO PREVIOUS MENU ")
             for i in range(1, 3):
                 puzzle1, puzzle2, puzzle3 = input('Enter the line ' + i + ' of the puzzle: ').split()
