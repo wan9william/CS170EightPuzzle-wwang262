@@ -1,4 +1,4 @@
-
+# Search Class the "driver" code with the search algorithms
 import Problem
 import tree_node
 SIZE = 3

@@ -1,4 +1,4 @@
-# main.py - "driver" code
+# main.py that contains the Definition for the GUI Class
 import Search
 import Problem
 initial_state = [1, 2, 3, 4, 5, 6, 7, 8, 0]
