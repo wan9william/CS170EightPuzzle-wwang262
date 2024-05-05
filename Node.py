@@ -14,6 +14,14 @@ class Node:
         for n in nodes:
             n.parent = self
             self.children.append(n)
+    def getPath(self):
+        path = []
+        currNode = self
+        while currNode.parent != None:
+            path.append(currNode.lastAction)
+            currNode = currNode.parent
+        path.reverse()
+        return path
     def __str__(self):
         value = ""
         for x in range(0, self.size*self.size,self.size):

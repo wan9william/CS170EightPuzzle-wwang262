@@ -9,9 +9,9 @@ class Solver:
         self.exploredStates = dict()
     def queueing_function(self, heap, nodes):
         for i in range(0, len(nodes)):
+            self.pqcount+=1
             node = nodes[i]
             hp.heappush(heap, (self.pqcount,node))
-            self.pqcount+=1
     def general_search(self, puzzle):
         self.reset()
         nodes = []
