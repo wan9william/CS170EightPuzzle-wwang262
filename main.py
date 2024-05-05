@@ -2,6 +2,7 @@
 
 import tree_node
 import Problem
+import Puzzle_GUI
 from heapq import heappop, heappush
 import math
 
@@ -177,12 +178,9 @@ def search(problem, search_type):
 
     return None
 
-initial_state = [1, 2, 3, 4, 6, 0, 7, 5, 8]             # initial state of the problem
-problem = Problem.Problem(initial_state)                # initialize problem object with initial state
-problem.scramble_board(initial_state)                   # scramble the initial state of the problem
-solution_node = search(problem, "misplaced_tile")       # call search() to find the solution node
-
-# print the solution path
-if solution_node:
-    print("Final Solution Path:")
-    solution_node.print_solution_path()
+gui = Puzzle_GUI.Puzzle_GUI()
+if gui.run():
+    solution_node = search(gui.get_problem(), gui.get_heuristic())          # call search() to find the solution node
+    if solution_node:                                                       # print the solution path
+        print("Final Solution Path:")
+        solution_node.print_solution_path()
