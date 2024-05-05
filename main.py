@@ -29,6 +29,8 @@ class GUI:
 
                 print("INVALID INPUT TRY AGAIN")
 
+    #GUI Screen for game modes
+    #TODO: Test
     def start_game(self):
         while True:
             print("ENTER GAME TYPE")
@@ -51,6 +53,8 @@ class GUI:
 
                 print("INVALID INPUT TRY AGAIN")
 
+    #GUI screen to enter your own puzzle
+    #TODO: test function
     def enter_puzzle(self):
         new_state = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         count = 0
@@ -134,9 +138,14 @@ class GUI:
             for i in unexplored_nodes:  # queue the unexplored nodes
                 frontier.append(i)
 
+
+    #TODO: verifying valid puzzles
     def valid_puzzle(self, state):
         return True
 
+
+    #game screen for user input or solving with search algo
+    #TODO: incorporate the different search algos
     def game(self):
         while True:
 
