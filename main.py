@@ -30,7 +30,7 @@ class GUI:
                 print("INVALID INPUT TRY AGAIN")
 
     #GUI Screen for game modes
-    #TODO: Test
+    #TODO: Test exit and enter your own puzzle inputs
     def start_game(self):
         while True:
             print("ENTER GAME TYPE")
@@ -54,7 +54,7 @@ class GUI:
                 print("INVALID INPUT TRY AGAIN")
 
     #GUI screen to enter your own puzzle
-    #TODO: test function
+    #TODO: test valid puzzles, test exit input, incorporate larger puzzles
     def enter_puzzle(self):
         new_state = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         count = 0
@@ -169,17 +169,19 @@ class GUI:
             elif choice == "V" or choice == "v":
                 solution_node = self.search(self._problem)  # call search() to find the solution node
                 solution_node.print_solution_path()  # print the solution path
-                return False
             elif choice == "X" or choice == "x":
                 return False
             else:
                 print("INVALID INPUT")
 
             if self._problem.is_solution(self._problem.get_initial_state()[:]):
-                print("Congratulations! You've got the puzzle!")
+                print("Congratulations! You've completed the puzzle!")
                 print("PRESS ANY KEY TO RETURN TO MAIN MENU")
                 choice = input()
-                return False
+                if choice == "X":
+                    return False
+                else:
+                    return False
 
 
 gui = GUI()
