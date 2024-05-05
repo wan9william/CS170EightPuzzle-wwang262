@@ -47,7 +47,7 @@ class Problem:
     # Usage: problem.move_up(curr_state)
     def move_up(self, curr_state):
         x = curr_state.index(0)
-        if x / self._size > 1:
+        if x / self._size >= 1:
             temp = curr_state[x - self._size]
             curr_state[x - self._size] = curr_state[x]
             curr_state[x] = temp
