@@ -9,7 +9,8 @@ class tree_node:
     # _board_array: array that represents the state of the 8-puzzle board
     # _children:    array that represents the node's children
     # _parent:      node that represents the parent of the node
-    def __init__(self, board_array):
+    def __init__(self, size, board_array):
+        self._size = size
         self._board_array = board_array
         self._children = []
         self._parent = None
@@ -48,8 +49,8 @@ class tree_node:
     # tab: # of spaces from the left - for formatting (default is 0)
     # Usage: node.print_state() or node.print_state(i) where i is some integer
     def print_state(self, tab=0):
-        for x in range(0, 3):
-            print(("  " * tab) + str(self._board_array[3 * x]), self._board_array[3 * x + 1],
+        for x in range(0, self._size):
+            print(("  " * tab) + str(self._board_array[self._size * x]), self._board_array[self._size * x + 1],
                   self._board_array[3 * x + 2])
 
     # Prints the state of all the nodes in the tree

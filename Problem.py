@@ -2,11 +2,13 @@
 
 import random
 
+
 class Problem:
     # Initialization for Problem object
     # _initial_state:   array that represents the initial state of the 8-puzzle board
     # _goal_state:      array that represents the goal state of the 8-puzzle board
-    def __init__(self, initial_state):
+    def __init__(self, size, initial_state):
+        self._size = size
         self._initial_state = initial_state
         self._goal_state = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 
@@ -21,7 +23,7 @@ class Problem:
     # Usage: problem.move_left(curr_state)
     def move_left(self, curr_state):
         x = curr_state.index(0)
-        if x % 3 != 0:
+        if x % self._size != 0:
             temp = curr_state[x - 1]
             curr_state[x - 1] = curr_state[x]
             curr_state[x] = temp
@@ -33,7 +35,7 @@ class Problem:
     # Usage: problem.move_right(curr_state)
     def move_right(self, curr_state):
         x = curr_state.index(0)
-        if x % 3 != 2:
+        if x % self._size != self._size-1:
             temp = curr_state[x + 1]
             curr_state[x + 1] = curr_state[x]
             curr_state[x] = temp
@@ -45,9 +47,9 @@ class Problem:
     # Usage: problem.move_up(curr_state)
     def move_up(self, curr_state):
         x = curr_state.index(0)
-        if x / 3 > 1:
-            temp = curr_state[x - 3]
-            curr_state[x - 3] = curr_state[x]
+        if x / self._size > 1:
+            temp = curr_state[x - self._size]
+            curr_state[x - self._size] = curr_state[x]
             curr_state[x] = temp
         return curr_state
 
@@ -57,9 +59,9 @@ class Problem:
     # Usage: problem.move_down(curr_state)
     def move_down(self, curr_state):
         x = curr_state.index(0)
-        if x / 3 < 2:
-            temp = curr_state[x + 3]
-            curr_state[x + 3] = curr_state[x]
+        if x / self._size < self._size-1:
+            temp = curr_state[x + self._size]
+            curr_state[x + self._size] = curr_state[x]
             curr_state[x] = temp
         return curr_state
 
@@ -87,3 +89,8 @@ class Problem:
         if state_to_check == self._goal_state:
             return True
         return False
+
+    def print_board(self):
+        for x in range(0, 3):
+            print(self._initial_state[3 * x], self._initial_state[3 * x + 1], self._initial_state[3 * x + 2])
+        print("\n")
