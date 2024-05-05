@@ -75,7 +75,7 @@ class Puzzle:
             return False
     def down(self,state):
         x = state.index(0)
-        if x + self.size < self.size*self.size-1:
+        if x + self.size <= self.size*self.size-1:
             temp = state[x + self.size]
             state[x + self.size] = state[x]
             state[x] = temp

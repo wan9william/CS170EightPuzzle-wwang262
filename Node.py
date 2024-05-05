@@ -24,7 +24,8 @@ class Node:
             path.append(currNode.lastAction)
             currNode = currNode.parent
         path.reverse()
-        return path
+        pathstr = str(path).replace("4", "D").replace("3", "U").replace("2", "R").replace("1", "L")
+        return pathstr
     def __str__(self):
         value = ""
         for x in range(0, self.size*self.size,self.size):
