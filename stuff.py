@@ -2,8 +2,10 @@ import heapq as hp
 import Problem
 
 exploredStates = dict()
+pqcount = 1
 
 def expand(problem, nodething):
+    global pqcount
     node = nodething[1]
     a = []
     left = node.copy()
@@ -11,13 +13,17 @@ def expand(problem, nodething):
     up = node.copy()
     down = node.copy()
     if problem.left(left):
-        a.append((1,left))
+        a.append((pqcount,left))
+        pqcount+=1
     if problem.right(right):
-        a.append((1,right))
+        a.append((pqcount,right))
+        pqcount+=1
     if problem.up(up):
-        a.append((1,up))
+        a.append((pqcount,up))
+        pqcount+=1
     if problem.down(down):
-        a.append((1,down))
+        a.append((pqcount,down))
+        pqcount+=1
     return a
 
 
@@ -44,9 +50,12 @@ def general_search(problem):
             queueing_function(nodes, expand(problem, node))
         
 
-p = Problem.Problem(Problem.createInitState(3))
-state = p.initialState
-p.scramble(state)
+# p = Problem.Problem(Problem.createInitState(3))
+# state = p.initialState
+# p.scramble(state)
 
+# general_search(p)
+
+
+p = Problem.Problem([1,2,3,4,5,6,7,0,8])
 general_search(p)
-# print(str(state))
