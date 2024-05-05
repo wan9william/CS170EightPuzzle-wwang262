@@ -7,12 +7,15 @@ class Node:
         self.parent = None
         self.lastAction = -1 
         self.size = int(math.sqrt(len(self.state)))
+        self.depth = 0
     def addChild(self,node):
         node.parent = self
+        node.depth = self.depth + 1
         self.children.append(node)
     def addChildren(self,nodes):
         for n in nodes:
             n.parent = self
+            n.depth = self.depth + 1
             self.children.append(n)
     def getPath(self):
         path = []
