@@ -18,7 +18,7 @@ class GUI:
             print("BY ARYAN GOEL ANTHONY JOHNSON WILLIAM WANG")
             print("[S]START")
             print("[X]EXIT")
-            choice = input()
+            choice = input(":")
             if choice == "S" or choice == "s":
                 if self.start_game():
                     break
@@ -38,7 +38,7 @@ class GUI:
             print("2- Enter your own puzzle")
             print("X- Return to Main Menu")
 
-            choice = input()
+            choice = input(":")
 
             if choice == "1":
                 # self._problem = Problem.Problem(self._size,
@@ -149,22 +149,20 @@ class GUI:
     #TODO: incorporate the different search algos
     def game(self):
         while True:
-
             self._problem.print_board()
-            print(self._problem.get_initial_state())
             print("[V] TO SOLVE [X] TO RETURN TO MAIN MENU  ")
-            print("[W] SWAP UP  [A] SWAP LEFT [S] SWAP DOWN [D] SWAP RIGHT")
-            choice = input()
-            if choice == "W" or choice == "w":
+            print("[W]UP   [A]LEFT  [S]DOWN  [D]RIGHT")
+            choice = input(":")
+            if choice == "W" or choice == "w":  #move blank space up
                 self._problem = Problem.Problem(self._size,
                                                 self._problem.move_up(self._problem.get_initial_state()[:]))
-            elif choice == "A" or choice == "a":
+            elif choice == "A" or choice == "a": # move blank space left
                 self._problem = Problem.Problem(self._size,
                                                 self._problem.move_left(self._problem.get_initial_state()[:]))
-            elif choice == "S" or choice == "s":
+            elif choice == "S" or choice == "s": # move blank space down
                 self._problem = Problem.Problem(self._size,
                                                 self._problem.move_down(self._problem.get_initial_state()[:]))
-            elif choice == "D" or choice == "d":
+            elif choice == "D" or choice == "d": # move blank space right
                 self._problem = Problem.Problem(self._size,
                                                 self._problem.move_right(self._problem.get_initial_state()[:]))
             elif choice == "V" or choice == "v":
@@ -178,7 +176,7 @@ class GUI:
             if self._problem.is_solution(self._problem.get_initial_state()[:]):
                 print("Congratulations! You've completed the puzzle!")
                 print("PRESS ANY KEY TO RETURN TO MAIN MENU")
-                choice = input()
+                choice = input(":")
                 if choice == "X":
                     return False
                 else:
