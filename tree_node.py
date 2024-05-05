@@ -12,6 +12,17 @@ class tree_node:
         self._board_array = board_array
         self._children = []
         self._parent = None
+        self._cost_g = 0
+        self._cost_h = 0
+
+    def __eq__(self, other):
+        return 1
+
+    def get_cost_g(self):
+        return self._cost_g
+
+    def get_cost_h(self):
+        return self._cost_h
 
     # Returns the array that represents the state of the 8-puzzle board
     # Usage: node.get_state()
@@ -27,6 +38,12 @@ class tree_node:
             parent = parent._parent
             depth += 1
         return depth
+
+    def set_cost_g(self, cost_g):
+        self._cost_g = cost_g
+    
+    def set_cost_h(self, cost_h):
+        self._cost_h = cost_h
 
     # Adds the child node
     # child: the child node

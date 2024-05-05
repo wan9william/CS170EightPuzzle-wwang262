@@ -63,11 +63,11 @@ class Problem:
             curr_state[x] = temp
         return curr_state
 
-    # Scrambles the board by doing 1000 random moves
+    # Scrambles the board by doing 100 random moves
     # curr_state: the array that represents the state that is modified
     # Usage: problem.scramble_board(curr_state)
     def scramble_board(self, curr_state):
-        for x in range(0, random.randint(0, 1000)):
+        for x in range(0, random.randint(0, 100)):
             temp_state = random.randint(0, 3)
             match temp_state:
                 case 0:
