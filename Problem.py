@@ -4,7 +4,6 @@ import math
 class Problem:
     def __init__(self,initialState):
         self.initialState = initialState.copy()
-        self.currentState = initialState.copy()
         self.size = int(math.sqrt(len(self.initialState)))
     def left(self,state):
         x = state.index(0)
@@ -43,7 +42,7 @@ class Problem:
         else:
             return False
     def scramble(self,state):
-        for x in range(0, random.randint(0, 1000)):
+        for x in range(0, random.randint(0, 100)):
             temp_state = random.randint(0, 3)
             match temp_state:
                 case 0:
@@ -54,12 +53,6 @@ class Problem:
                     self.up(state)
                 case 3:
                     self.down(state)
-    def check_solution(self):
-        sizeSquared = self.size * self.size
-        for x in range(0, sizeSquared):
-            if (x != sizeSquared-1 and self.currentState[x] != x+1) or (x == sizeSquared-1 and self.currentState[x] != 0):
-                return False
-        return True
     def check_solution(self,state):
         sizeSquared = self.size * self.size
         for x in range(0, sizeSquared):
@@ -70,8 +63,7 @@ class Problem:
         a = state
         b = self.size
         for x in range(0, self.size*self.size,self.size):
-            print(self.currentState[x:x+b])
-        # print("\n")
+            print(state[x:x+b])
         
 
 
@@ -79,24 +71,4 @@ class Problem:
 def createInitState(size):
     return [x if x != size*size else 0 for x in range (1,size*size+1)]
 
-
-
-
-
-
-
-
-
-# p = Problem(createInitState(3))
-# # print(p.initialState)
-# print(p.initialState)
-# a = p.initialState.copy()
-# p.left(a)
-# p.print_state(a)
-# p.left()
-# p.up()
-# p.up()
-# p.up()
-# p.up()
-# p.up()
 

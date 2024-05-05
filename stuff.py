@@ -39,8 +39,6 @@ def general_search(problem):
         if len(nodes) <= 0:
             return -1 # failure
         node = hp.heappop(nodes)   
-        # print(node)    
-        # print(problem.check_solution(node[1]))
         print(node)
         print(problem.check_solution(node[1]))
         if problem.check_solution(node[1]):
@@ -57,5 +55,12 @@ def general_search(problem):
 # general_search(p)
 
 
-p = Problem.Problem([1,2,3,4,5,6,7,0,8])
+# p = Problem.Problem([1,2,3,4,5,6,7,0,8])
+# general_search(p)
+
+p = Problem.Problem(Problem.createInitState(3))
+state = p.initialState
+p.scramble(state)
+
 general_search(p)
+
