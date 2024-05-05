@@ -13,7 +13,7 @@ class Puzzle:
         self.startNode = Node.Node(initialState.copy())
         self.size = int(math.sqrt(len(self.startNode.state)))
         self.goalNode = Node.Node(createGoalList(self.size))
-    def expand(self, n): # doesn't assign parent and childs
+    def expand(self, n): 
         nodes = []
         left = n.state.copy()
         right = n.state.copy()
