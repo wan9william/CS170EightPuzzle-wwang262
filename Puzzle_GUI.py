@@ -30,7 +30,7 @@ class Puzzle_GUI:
     def run(self):
         while True:
             print("WELCOME TO EIGHT PUZZLE SOLVER")
-            print("BY ARYAN GOEL (862134846) ANTHONY JOHNSON () WILLIAM WANG (862323453)")
+            print("BY ARYAN GOEL (862134846) ANTHONY JOHNSON (862315881) WILLIAM WANG (862323453)")
             print("[S]START")
             print("[X]EXIT")
             choice = input()
