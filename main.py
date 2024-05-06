@@ -86,13 +86,13 @@ def expand_node(node, problem, explored_nodes, frontier, search_type):
     unexplored_nodes = []
 
     if is_unexplored(state_l, explored_nodes, frontier, search_type):        # check if state_l is unexplored
-        unexplored_nodes.append(tree_node.tree_node(state_l))
+        unexplored_nodes.append(tree_node.tree_node(state_l, 1))
     if is_unexplored(state_r, explored_nodes, frontier, search_type):        # check if state_r is unexplored
-        unexplored_nodes.append(tree_node.tree_node(state_r))
+        unexplored_nodes.append(tree_node.tree_node(state_r, 2))
     if is_unexplored(state_u, explored_nodes, frontier, search_type):        # check if state_u is unexplored
-        unexplored_nodes.append(tree_node.tree_node(state_u))
+        unexplored_nodes.append(tree_node.tree_node(state_u, 3))
     if is_unexplored(state_d, explored_nodes, frontier, search_type):        # check if state_d is unexplored
-        unexplored_nodes.append(tree_node.tree_node(state_d))
+        unexplored_nodes.append(tree_node.tree_node(state_d, 4))
 
     return unexplored_nodes
 
@@ -184,3 +184,5 @@ if gui.run():
     if solution_node:                                                       # print the solution path
         print("Final Solution Path:")
         solution_node.print_solution_path()
+        print("Sequence Of Actions:")
+        solution_node.print_action_path()

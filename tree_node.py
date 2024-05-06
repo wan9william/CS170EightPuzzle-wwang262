@@ -8,12 +8,13 @@ class tree_node:
     # _board_array: array that represents the state of the 8-puzzle board
     # _children:    array that represents the node's children
     # _parent:      node that represents the parent of the node
-    def __init__(self, board_array):
+    def __init__(self, board_array, last_op=-1):
         self._board_array = board_array
         self._children = []
         self._parent = None
         self._cost_g = 0
         self._cost_h = 0
+        self._last_op = last_op # 1 = left, 2 = right, 3 = up, 4 = down
 
     def __eq__(self, other):
         return 1
@@ -93,6 +94,18 @@ class tree_node:
         while solution_stack:
             solution_stack.pop().print_state()
             print("\n", end="")
+    
+    # prints the actions to solve puzzle (right means move the empty space to the right, left moves it left, etc)
+    def print_action_path(self):
+        curr_state = self
+        actions = []
+        while curr_state._parent:
+            actions.append(curr_state._last_op)
+            curr_state = curr_state._parent
+        actions.reverse()
+        print(str(actions).replace("1", "left").replace("2", "right").replace("3", "up").replace("4", "down"))
+        # 1 = left, 2 = right, 3 = up, 4 = down
+
 
 # Testing
 # root = tree_node([1, 2, 3, 4, 5, 6, 7, 8, 0])
